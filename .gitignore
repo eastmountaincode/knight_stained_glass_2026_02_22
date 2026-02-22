@@ -1,0 +1,13 @@
+node_modules/
+.DS_Store
+*.swp
+*.swo
+.env
+.env.local
+photos_2026_02_17/
+meetings/
+design/
+site/
+site-v2/
+
+._*
