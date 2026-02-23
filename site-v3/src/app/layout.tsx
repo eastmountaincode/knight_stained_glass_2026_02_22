@@ -1,18 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import localFont from 'next/font/local'
 import { DevMode } from '@/components/DevMode'
 import './globals.css'
 
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
-})
-
-const uncial = localFont({
-  src: '../fonts/UncialAntiqua-Regular.ttf',
-  variable: '--font-uncial',
-  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -28,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${uncial.variable}`}>
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/ghg2orb.css" />
+      </head>
+      <body className={inter.variable}>
         <DevMode />
         {children}
       </body>

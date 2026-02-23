@@ -11,7 +11,9 @@
   --color-label: #8a7a60;
   --color-border: #2a2418;
   --color-border-gold: rgba(201, 168, 76, 0.15);
-  --font-display: var(--font-uncial);
+  --font-display: "p22-morris-golden", sans-serif;
+  --font-display-troy: "p22-morris-troy", sans-serif;
+  --font-ornaments: "p22-morris-ornaments", sans-serif;
   --font-body: var(--font-inter);
 }
 
@@ -27,6 +29,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* All interactive elements get pointer cursor */
+button,
+a,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+select,
+summary {
+  cursor: pointer;
 }
 
 /* Dev mode borders */
