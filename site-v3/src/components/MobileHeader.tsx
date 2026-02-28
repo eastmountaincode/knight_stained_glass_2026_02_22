@@ -12,7 +12,7 @@ interface Props {
 export function MobileHeader({ sections, activeSection, menuOpen, onToggleMenu, onCloseMenu }: Props) {
   return (
     <>
-      <div className="mx-auto flex h-20 max-w-[1200px] items-center justify-between lg:hidden">
+      <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between lg:hidden">
         <a href="#hero" className="flex min-w-0 items-center gap-2">
           <Image
             src="/shield-logo.png"
@@ -58,10 +58,10 @@ export function MobileHeader({ sections, activeSection, menuOpen, onToggleMenu, 
               <a
                 key={id}
                 href={`#${id}`}
-                className={`text-2xl font-medium uppercase tracking-[0.2em] ${
+                className={`relative text-2xl font-medium uppercase tracking-[0.2em] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-[var(--color-gold)] after:transition-all after:duration-300 ${
                   activeSection === id
-                    ? 'text-[var(--color-gold)]'
-                    : 'text-[var(--color-cream)]'
+                    ? 'text-[var(--color-gold)] after:w-full'
+                    : 'text-[var(--color-cream)] after:w-0'
                 }`}
                 onClick={onCloseMenu}
               >

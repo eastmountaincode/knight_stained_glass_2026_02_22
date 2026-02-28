@@ -7,7 +7,7 @@ interface Props {
 
 export function DesktopHeader({ sections, activeSection }: Props) {
   return (
-    <div className="mx-auto hidden h-24 max-w-[1200px] items-center justify-between lg:flex">
+    <div className="mx-auto hidden h-20 items-center justify-between lg:flex">
       <a href="#hero" className="flex items-center gap-3">
         <Image
           src="/shield-logo.png"
@@ -27,10 +27,10 @@ export function DesktopHeader({ sections, activeSection }: Props) {
           <li key={id}>
             <a
               href={`#${id}`}
-              className={`text-base font-medium uppercase tracking-[0.15em] ${
+              className={`relative text-base font-medium uppercase tracking-[0.15em] [text-shadow:_0_1px_4px_rgb(0_0_0_/_80%)] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-[var(--color-gold)] after:transition-all after:duration-300 ${
                 activeSection === id
-                  ? 'text-[var(--color-gold)]'
-                  : 'text-[var(--color-label)] hover:text-[var(--color-text)]'
+                  ? 'text-[var(--color-gold)] after:w-full'
+                  : 'text-[var(--color-cream)] after:w-0 hover:text-[var(--color-gold)] hover:after:w-full'
               }`}
             >
               {label}

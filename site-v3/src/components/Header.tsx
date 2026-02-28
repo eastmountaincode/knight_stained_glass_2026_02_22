@@ -5,7 +5,7 @@ import { DesktopHeader } from './DesktopHeader'
 import { MobileHeader } from './MobileHeader'
 
 export const sections = [
-  { id: 'church', label: 'Church' },
+  { id: 'religious', label: 'Religious' },
   { id: 'commercial', label: 'Commercial' },
   { id: 'residential', label: 'Residential' },
   { id: 'about', label: 'About' },
@@ -15,9 +15,10 @@ export const sections = [
 export function Header() {
   const [activeSection, setActiveSection] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [scrollOpacity, setScrollOpacity] = useState(0)
 
   useEffect(() => {
+    const heroEl = document.getElementById('hero')
     const sectionEls = sections
       .map(({ id }) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[]
@@ -30,13 +31,16 @@ export function Header() {
           }
         })
       },
-      { threshold: 0.3, rootMargin: '-64px 0px -40% 0px' }
+      { threshold: 0.3, rootMargin: '0px 0px -40% 0px' }
     )
 
+    if (heroEl) observer.observe(heroEl)
     sectionEls.forEach((el) => observer.observe(el))
 
-    const handleScroll = () => setScrolled(window.scrollY > 80)
-    window.addEventListener('scroll', handleScroll)
+    const handleScroll = () => {
+      setScrollOpacity(Math.min(window.scrollY / 200, 1))
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
 
     return () => {
       observer.disconnect()
@@ -61,11 +65,11 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 px-[5vw] ${
-        scrolled
-          ? 'bg-[#0a0a0a]/95 backdrop-blur-sm shadow-[0_1px_0_rgba(201,168,76,0.1)]'
-          : 'bg-transparent'
-      }`}
+      className="fixed top-0 right-0 left-0 z-50 px-[5vw]"
+      style={{
+        backgroundColor: `rgba(10, 10, 10, ${0.9 + scrollOpacity * 0.1})`,
+        backdropFilter: scrollOpacity > 0 ? `blur(${scrollOpacity * 8}px)` : 'none',
+      }}
     >
       <MobileHeader
         sections={sections}

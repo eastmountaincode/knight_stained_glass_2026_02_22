@@ -64,6 +64,9 @@ All usable photos are in `photos_2026_02_17/`.
 - Site source code will go in a `site/` directory (TBD)
 - Design mockups/concepts go in `design/` (TBD)
 
+## Naming Conventions
+- Section IDs and labels should be consistent — if the nav label is "Religious", the section ID should be `religious`, not `church`. Keep IDs and labels aligned.
+
 ## Decisions Log
 Track key decisions here as they are made:
 - 2026-02-06: Single-page scroll site preferred over multi-page
@@ -71,3 +74,4 @@ Track key decisions here as they are made:
 - 2026-02-06: Three service categories: Religious, Commercial, Residential
 - 2026-02-06: Custom-built site, no CMS needed
 - 2026-02-06: Church restoration emphasis is top priority
+- 2026-02-28: Section IDs should match their nav labels for consistency (e.g., `religious` not `church`)
