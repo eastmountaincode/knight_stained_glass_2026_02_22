@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 
 export interface CarouselImage {
+  key: string
   src: string
   alt: string
   caption?: string
@@ -72,11 +73,11 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
   )
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative flex flex-col ${className}`}>
       {/* Scroll container */}
       <div
         ref={scrollRef}
-        className="flex snap-x snap-mandatory overflow-x-auto scrollbar-hide"
+        className="flex flex-1 snap-x snap-mandatory overflow-x-auto scrollbar-hide"
         role="region"
         aria-label="Image gallery"
         aria-roledescription="carousel"
@@ -85,19 +86,19 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
       >
         {images.map((image, index) => (
           <div
-            key={image.src}
+            key={image.key}
             className="w-full flex-none snap-center"
             role="group"
             aria-roledescription="slide"
             aria-label={`Slide ${index + 1} of ${images.length}`}
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm">
+            <div className="relative h-full w-full overflow-hidden rounded-sm">
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
                 unoptimized
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
               />
               {image.caption && (

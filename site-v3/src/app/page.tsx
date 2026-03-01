@@ -1,63 +1,50 @@
 import { Header } from '@/components/Header'
-import { DevImageCycler } from '@/components/DevImageCycler'
+import { Hero } from '@/components/Hero'
+import { ReligiousSection } from '@/components/ReligiousSection'
+import { CommercialSection } from '@/components/CommercialSection'
+import { ResidentialSection } from '@/components/ResidentialSection'
+import { ClientTypes } from '@/lib/sanity';
 
-const placeholderSections = [
-  { id: 'religious', label: 'Church Restorations' },
-  { id: 'commercial', label: 'Commercial Work' },
-  { id: 'residential', label: 'Residential' },
-  { id: 'about', label: 'About' },
-  { id: 'contact', label: 'Contact' },
-]
+export default async function Home() {
+  const clientTypes = await ClientTypes.get();
+  const byId = Object.fromEntries(clientTypes.map((ct: any) => [ct._id, ct]));
+  const religious = byId['religious'];
+  const commercial = byId['commercial'];
+  const residential = byId['residential'];
 
-export default function Home() {
   return (
     <>
       <Header />
+      <Hero />
+      {religious && <ReligiousSection data={religious} />}
+      {commercial && <CommercialSection data={commercial} />}
+      {residential && <ResidentialSection data={residential} />}
 
-      {/* Hero */}
+      {/* About */}
       <section
-        id="hero"
-        className="relative flex min-h-screen snap-start items-center overflow-hidden border-b border-[var(--color-border)]"
+        id="about"
+        className="flex min-h-screen flex-col items-center justify-center snap-start border-b border-[var(--color-border)] px-6 py-20 sm:px-12 md:px-20"
       >
-        {/* DEV: image cycler — replace with final hero images when done */}
-        <DevImageCycler />
-
-        {/* Content */}
-        <div className="relative z-10 w-full px-6 py-32 sm:px-12 md:px-20 lg:max-w-2xl">
-          <h1 className="font-[family-name:var(--font-display)] text-5xl leading-tight text-[var(--color-cream)] sm:text-6xl md:text-7xl">
-            Knight
-            <br />
-            Stained Glass
-          </h1>
-          <p className="mt-4 text-lg text-[var(--color-text)] sm:text-xl md:text-2xl">
-            Church restorations &amp; custom stained glass
-            <br className="hidden sm:block" />
-            <span className="text-[var(--color-text-muted)]"> — Cincinnati, OH</span>
-          </p>
-          <p className="mt-3 text-sm tracking-wide text-[var(--color-gold)]">
-            37 Five-Star Google Reviews
-          </p>
-          <a
-            href="#contact"
-            className="mt-8 inline-block rounded-sm border border-[var(--color-gold)] bg-[var(--color-gold)]/10 px-8 py-3 font-[family-name:var(--font-display)] text-lg tracking-wide text-[var(--color-gold)] transition-colors hover:bg-[var(--color-gold)]/20"
-          >
-            Request a Consultation
-          </a>
-        </div>
+        <h2 className="font-[family-name:var(--font-display)] text-4xl text-[var(--color-gold)]">
+          About
+        </h2>
+        <p className="mt-4 max-w-2xl text-center text-lg text-[var(--color-text)]">
+          Coming soon.
+        </p>
       </section>
 
-      {/* Remaining sections */}
-      {placeholderSections.map(({ id, label }) => (
-        <section
-          key={id}
-          id={id}
-          className="flex min-h-screen snap-start items-center justify-center border-b border-[var(--color-border)]"
-        >
-          <h2 className="font-[family-name:var(--font-display)] text-4xl text-[var(--color-gold)]">
-            {label}
-          </h2>
-        </section>
-      ))}
+      {/* Contact */}
+      <section
+        id="contact"
+        className="flex min-h-screen flex-col items-center justify-center snap-start px-6 py-20 sm:px-12 md:px-20"
+      >
+        <h2 className="font-[family-name:var(--font-display)] text-4xl text-[var(--color-gold)]">
+          Contact
+        </h2>
+        <p className="mt-4 max-w-2xl text-center text-lg text-[var(--color-text)]">
+          Coming soon.
+        </p>
+      </section>
     </>
   )
 }
