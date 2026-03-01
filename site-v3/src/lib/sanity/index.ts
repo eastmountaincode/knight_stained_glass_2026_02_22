@@ -10,6 +10,15 @@ export const client = SanityClient.createClient({
   useCdn: true,
 });
 
+export const draftClient = SanityClient.createClient({
+  projectId: 'ra7jpks1',
+  dataset: 'production',
+  apiVersion: '2026-03-01',
+  useCdn: false,
+  token: process.env.SANITY_API_READ_TOKEN,
+  perspective: 'drafts',
+});
+
 const builder = SanityImage.createImageUrlBuilder(client);
 
 export function urlFor(source: SanityImage.SanityImageSource) {
@@ -17,15 +26,15 @@ export function urlFor(source: SanityImage.SanityImageSource) {
 }
 
 export const Settings = {
-  get: async () => {
-    const settings = await client.fetch(Queries.GET_SETTINGS_QUERY);
+  get: async (c = client) => {
+    const settings = await c.fetch(Queries.GET_SETTINGS_QUERY);
     return settings;
   },
 };
 
 export const ClientTypes = {
-  get: async () => {
-    const clientTypes = await client.fetch(Queries.CLIENT_TYPES_QUERY);
+  get: async (c = client) => {
+    const clientTypes = await c.fetch(Queries.CLIENT_TYPES_QUERY);
     return clientTypes;
   },
 };
