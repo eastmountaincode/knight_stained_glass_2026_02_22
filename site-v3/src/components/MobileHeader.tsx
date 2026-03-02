@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import Image from 'next/image'
 
@@ -10,6 +13,9 @@ interface Props {
 }
 
 export function MobileHeader({ sections, activeSection, menuOpen, onToggleMenu, onCloseMenu }: Props) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
   return (
     <>
       <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between lg:hidden">
@@ -51,7 +57,7 @@ export function MobileHeader({ sections, activeSection, menuOpen, onToggleMenu, 
       </div>
 
       {/* Portal overlay so it's not constrained by <header> */}
-      {createPortal(
+      {mounted && createPortal(
         <div
           className={`fixed inset-0 z-[49] flex flex-col items-center justify-center gap-8 bg-[#0a0a0a]/98 backdrop-blur-sm transition-all duration-300 ease-in-out lg:hidden ${
             menuOpen
