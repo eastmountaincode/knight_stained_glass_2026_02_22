@@ -34,10 +34,17 @@ const CANDIDATES = [
 ]
 
 export function DevImageCycler() {
-  const [index, setIndex] = useState(0)
+  const MOBILE_DEFAULT = 4   // image 5: nd-one-window-restored-one-out
+  const DESKTOP_DEFAULT = 20  // image 21: church-detail-1
+
+  const [index, setIndex] = useState(MOBILE_DEFAULT)
   const [yPos, setYPos] = useState(50)
   const [visible, setVisible] = useState(true)
   const [gradient, setGradient] = useState(true)
+
+  useEffect(() => {
+    if (window.innerWidth >= 1024) setIndex(DESKTOP_DEFAULT)
+  }, [])
 
   const prev = useCallback(
     () => setIndex((i) => (i - 1 + CANDIDATES.length) % CANDIDATES.length),
@@ -82,7 +89,7 @@ export function DevImageCycler() {
 
       {/* Gradient overlay */}
       {gradient && (
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-[#0a0a0a]/30 lg:bg-gradient-to-r lg:from-[#0a0a0a] lg:via-[#0a0a0a]/70 lg:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent" />
       )}
 
       {/* Dev controls overlay */}

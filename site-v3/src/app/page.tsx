@@ -1,15 +1,12 @@
-import { draftMode } from 'next/headers'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { ReligiousSection } from '@/components/ReligiousSection'
 import { CommercialSection } from '@/components/CommercialSection'
 import { ResidentialSection } from '@/components/ResidentialSection'
-import { ClientTypes, client, draftClient } from '@/lib/sanity';
+import { ClientTypes } from '@/lib/sanity';
 
 export default async function Home() {
-  const { isEnabled: isDraft } = await draftMode();
-  const sanity = isDraft ? draftClient : client;
-  const clientTypes = await ClientTypes.get(sanity);
+  const clientTypes = await ClientTypes.get();
   const byId = Object.fromEntries(clientTypes.map((ct: any) => [ct._id, ct]));
   const religious = byId['religious'];
   const commercial = byId['commercial'];

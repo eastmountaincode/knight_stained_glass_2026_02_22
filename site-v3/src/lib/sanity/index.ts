@@ -1,16 +1,17 @@
 import * as SanityClient from '@sanity/client';
 import * as SanityImage from '@sanity/image-url';
+import { draftMode } from 'next/headers';
 
 import * as Queries from './queries';
 
-export const client = SanityClient.createClient({
+const client = SanityClient.createClient({
   projectId: 'ra7jpks1',
   dataset: 'production',
   apiVersion: '2026-03-01',
   useCdn: true,
 });
 
-export const draftClient = SanityClient.createClient({
+const draftClient = SanityClient.createClient({
   projectId: 'ra7jpks1',
   dataset: 'production',
   apiVersion: '2026-03-01',
@@ -19,6 +20,12 @@ export const draftClient = SanityClient.createClient({
   perspective: 'drafts',
 });
 
+export async function sanityFetch<T>(query: string): Promise<T> {
+  const { isEnabled } = await draftMode();
+  const c = isEnabled ? draftClient : client;
+  return c.fetch(query);
+}
+
 const builder = SanityImage.createImageUrlBuilder(client);
 
 export function urlFor(source: SanityImage.SanityImageSource) {
@@ -26,15 +33,9 @@ export function urlFor(source: SanityImage.SanityImageSource) {
 }
 
 export const Settings = {
-  get: async (c = client) => {
-    const settings = await c.fetch(Queries.GET_SETTINGS_QUERY);
-    return settings;
-  },
+  get: () => sanityFetch<any>(Queries.GET_SETTINGS_QUERY),
 };
 
 export const ClientTypes = {
-  get: async (c = client) => {
-    const clientTypes = await c.fetch(Queries.CLIENT_TYPES_QUERY);
-    return clientTypes;
-  },
+  get: () => sanityFetch<any[]>(Queries.CLIENT_TYPES_QUERY),
 };

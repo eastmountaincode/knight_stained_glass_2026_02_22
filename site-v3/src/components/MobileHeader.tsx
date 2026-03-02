@@ -51,26 +51,31 @@ export function MobileHeader({ sections, activeSection, menuOpen, onToggleMenu, 
       </div>
 
       {/* Portal overlay so it's not constrained by <header> */}
-      {menuOpen &&
-        createPortal(
-          <div className="fixed inset-0 z-[49] flex flex-col items-center justify-center gap-8 bg-[#0a0a0a]/98 backdrop-blur-sm lg:hidden">
-            {sections.map(({ id, label }) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                className={`relative text-2xl font-medium uppercase tracking-[0.2em] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-[var(--color-gold)] after:transition-all after:duration-300 ${
-                  activeSection === id
-                    ? 'text-[var(--color-gold)] after:w-full'
-                    : 'text-[var(--color-cream)] after:w-0'
-                }`}
-                onClick={onCloseMenu}
-              >
-                {label}
-              </a>
-            ))}
-          </div>,
-          document.body
-        )}
+      {createPortal(
+        <div
+          className={`fixed inset-0 z-[49] flex flex-col items-center justify-center gap-8 bg-[#0a0a0a]/98 backdrop-blur-sm transition-all duration-300 ease-in-out lg:hidden ${
+            menuOpen
+              ? 'translate-y-0 opacity-100'
+              : '-translate-y-full opacity-0 pointer-events-none'
+          }`}
+        >
+          {sections.map(({ id, label }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className={`relative text-2xl font-medium uppercase tracking-[0.2em] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-[var(--color-gold)] after:transition-all after:duration-300 ${
+                activeSection === id
+                  ? 'text-[var(--color-gold)] after:w-full'
+                  : 'text-[var(--color-cream)] after:w-0'
+              }`}
+              onClick={onCloseMenu}
+            >
+              {label}
+            </a>
+          ))}
+        </div>,
+        document.body
+      )}
     </>
   )
 }
