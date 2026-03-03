@@ -53,7 +53,7 @@ export function DevImageCycler() {
 
   const [index, setIndex] = useState(MOBILE_DEFAULT)
   const [yPos, setYPos] = useState(Y_MOBILE)
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
   const [gradient, setGradient] = useState(true)
 
   const [darkUntil, setDarkUntil] = useState(DARK_UNTIL_MOBILE)
