@@ -33,18 +33,46 @@ const CANDIDATES = [
   '20251219_135218.jpg',
 ]
 
+// ── Gradient defaults (tweak these) ──────────────────────
+// darkUntil: where the solid dark region ends (%)
+// clearAt:   where it becomes fully transparent (%)
+// fade:      how much darkness lingers mid-transition (0–100)
+//            high = stays dark longer, low = drops off fast
+const DARK_UNTIL_MOBILE = 13
+const CLEAR_AT_MOBILE = 100
+const FADE_MOBILE = 75
+const DARK_UNTIL_DESKTOP = 0
+const CLEAR_AT_DESKTOP = 100
+const FADE_DESKTOP = 75
+
 export function DevImageCycler() {
   const MOBILE_DEFAULT = 4   // image 5: nd-one-window-restored-one-out
   const DESKTOP_DEFAULT = 20  // image 21: church-detail-1
+  const Y_MOBILE = 50
+  const Y_DESKTOP = 36
 
   const [index, setIndex] = useState(MOBILE_DEFAULT)
-  const [yPos, setYPos] = useState(50)
+  const [yPos, setYPos] = useState(Y_MOBILE)
   const [visible, setVisible] = useState(true)
   const [gradient, setGradient] = useState(true)
 
+  const [darkUntil, setDarkUntil] = useState(DARK_UNTIL_MOBILE)
+  const [clearAt, setClearAt] = useState(CLEAR_AT_MOBILE)
+  const [fade, setFade] = useState(FADE_MOBILE)
+
   useEffect(() => {
-    if (window.innerWidth >= 1024) setIndex(DESKTOP_DEFAULT)
+    if (window.innerWidth >= 1024) {
+      setIndex(DESKTOP_DEFAULT)
+      setYPos(Y_DESKTOP)
+      setDarkUntil(DARK_UNTIL_DESKTOP)
+      setClearAt(CLEAR_AT_DESKTOP)
+      setFade(FADE_DESKTOP)
+    }
   }, [])
+
+  // Mid-stop: sits halfway between dark and clear, opacity driven by fade
+  const midPos = Math.round((darkUntil + clearAt) / 2)
+  const midAlpha = fade / 100
 
   const prev = useCallback(
     () => setIndex((i) => (i - 1 + CANDIDATES.length) % CANDIDATES.length),
@@ -89,12 +117,18 @@ export function DevImageCycler() {
 
       {/* Gradient overlay */}
       {gradient && (
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(to right, #0a0a0a ${darkUntil}%, rgba(10,10,10,${midAlpha}) ${midPos}%, transparent ${clearAt}%)`,
+          }}
+        />
       )}
 
       {/* Dev controls overlay */}
       {visible && (
         <div className="absolute bottom-6 right-6 z-30 flex flex-col items-center gap-2 rounded-lg bg-black/80 px-4 py-3 font-mono text-sm text-white backdrop-blur-sm">
+          {/* Image selector */}
           <div className="flex items-center gap-3">
             <button onClick={prev} className="cursor-pointer px-2 py-1 hover:text-[var(--color-gold)]">
               &larr;
@@ -107,18 +141,22 @@ export function DevImageCycler() {
               &rarr;
             </button>
           </div>
+
+          {/* Y-position slider */}
           <div className="flex items-center gap-2 text-xs text-neutral-400">
-            <span>Y:</span>
+            <span className="w-16 text-right">Y pos:</span>
             <input
               type="range"
               min={0}
               max={100}
               value={yPos}
               onChange={(e) => setYPos(Number(e.target.value))}
-              className="w-40 cursor-pointer accent-[var(--color-gold)]"
+              className="w-32 cursor-pointer accent-[var(--color-gold)]"
             />
-            <span className="w-8 text-right text-[var(--color-gold)]">{yPos}%</span>
+            <span className="w-10 text-right text-[var(--color-gold)]">{yPos}%</span>
           </div>
+
+          {/* Gradient toggle + sliders */}
           <div className="flex items-center gap-2 text-xs">
             <button
               onClick={() => setGradient((g) => !g)}
@@ -127,6 +165,27 @@ export function DevImageCycler() {
               Gradient {gradient ? 'ON' : 'OFF'}
             </button>
           </div>
+
+          {gradient && (
+            <>
+              <div className="flex items-center gap-2 text-xs text-neutral-400">
+                <span className="w-16 text-right">Dark:</span>
+                <input type="range" min={0} max={100} value={darkUntil} onChange={(e) => setDarkUntil(Number(e.target.value))} className="w-32 cursor-pointer accent-[var(--color-gold)]" />
+                <span className="w-10 text-right text-[var(--color-gold)]">{darkUntil}%</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-neutral-400">
+                <span className="w-16 text-right">Fade:</span>
+                <input type="range" min={0} max={100} value={fade} onChange={(e) => setFade(Number(e.target.value))} className="w-32 cursor-pointer accent-[var(--color-gold)]" />
+                <span className="w-10 text-right text-[var(--color-gold)]">{fade}%</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-neutral-400">
+                <span className="w-16 text-right">Clear:</span>
+                <input type="range" min={0} max={100} value={clearAt} onChange={(e) => setClearAt(Number(e.target.value))} className="w-32 cursor-pointer accent-[var(--color-gold)]" />
+                <span className="w-10 text-right text-[var(--color-gold)]">{clearAt}%</span>
+              </div>
+            </>
+          )}
+
           <div className="text-[10px] text-neutral-500">
             &larr;&rarr; images &nbsp; &uarr;&darr; position &nbsp; Esc toggle
           </div>

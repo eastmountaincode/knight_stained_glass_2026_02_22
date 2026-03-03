@@ -10,15 +10,15 @@ export function Hero() {
       <DevImageCycler />
 
       {/* Content */}
-      <div className="relative z-10 w-full px-6 py-32 sm:px-12 md:px-20 lg:max-w-2xl">
-        <h1 className="font-[family-name:var(--font-display)] text-5xl leading-tight text-[var(--color-cream)] sm:text-6xl md:text-7xl">
+      <div className="section-px relative z-10 max-w-sm py-32 lg:max-w-2xl">
+        <h1 className="font-[family-name:var(--font-display)] text-5xl leading-tight text-[var(--color-cream)] lg:text-7xl">
           Knight
           <br />
           Stained Glass
         </h1>
-        <p className="mt-4 text-lg text-[var(--color-text)] sm:text-xl md:text-2xl">
+        <p className="mt-4 text-lg text-[var(--color-text)] lg:text-2xl">
           Church restorations &amp; custom stained glass
-          <br className="hidden sm:block" />
+          <br className="hidden lg:block" />
           <span className="text-[var(--color-text-muted)]"> — Cincinnati, OH</span>
         </p>
         <p className="mt-3 text-sm tracking-wide text-[var(--color-gold)]">

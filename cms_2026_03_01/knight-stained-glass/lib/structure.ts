@@ -1,7 +1,7 @@
 import * as SanityStructure from 'sanity/structure'
 import * as Icons from './icons'
 
-const SINGLETONS = ['settings', 'religious', 'commercial', 'residential']
+const SINGLETONS = ['settings', 'religious', 'commercial', 'residential', 'about', 'contact']
 
 const structure: SanityStructure.StructureResolver = (S) => {
   return S.list()
@@ -13,21 +13,39 @@ const structure: SanityStructure.StructureResolver = (S) => {
         .child(S.document().schemaType('settings').documentId('settings')),
 
       S.divider(),
+      S.listItem()
+        .title('Client Types')
+        .icon(Icons.UserIcon)
+        .child(
+          S.list()
+            .title('Client Types')
+            .items([
+              S.listItem()
+                .title('Religious')
+                .icon(Icons.UserIcon)
+                .child(S.document().schemaType('clientType').documentId('religious')),
+              S.listItem()
+                .title('Commercial')
+                .icon(Icons.UserIcon)
+                .child(S.document().schemaType('clientType').documentId('commercial')),
+              S.listItem()
+                .title('Residential')
+                .icon(Icons.UserIcon)
+                .child(S.document().schemaType('clientType').documentId('residential')),
+            ])
+        ),
+
+      S.divider(),
 
       S.listItem()
-        .title('Religious')
-        .icon(Icons.UserIcon)
-        .child(S.document().schemaType('clientType').documentId('religious')),
+        .title('About')
+        .icon(Icons.Person)
+        .child(S.document().schemaType('about').documentId('about')),
 
       S.listItem()
-        .title('Commercial')
-        .icon(Icons.UserIcon)
-        .child(S.document().schemaType('clientType').documentId('commercial')),
-
-      S.listItem()
-        .title('Residential')
-        .icon(Icons.UserIcon)
-        .child(S.document().schemaType('clientType').documentId('residential')),
+        .title('Contact')
+        .icon(Icons.Phone)
+        .child(S.document().schemaType('contact').documentId('contact')),
     ])
 }
 

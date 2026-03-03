@@ -39,3 +39,11 @@ export const Settings = {
 export const ClientTypes = {
   get: () => sanityFetch<any[]>(Queries.CLIENT_TYPES_QUERY),
 };
+
+export const About = {
+  get: () => sanityFetch<any>(Queries.GET_ABOUT_QUERY),
+};
+
+export const Contact = {
+  get: () => sanityFetch<any>(Queries.GET_CONTACT_QUERY),
+};

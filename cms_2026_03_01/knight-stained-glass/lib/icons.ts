@@ -16,5 +16,6 @@ export {
     Settings as Settings,
     SquareSplitHorizontal as SplitPane,
     Tag as Tag,
+    Phone as Phone,
     User as UserIcon,
   } from 'lucide-react';

@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Knight Stained Glass — Cincinnati, OH',
   description:
-    'Church restorations, commercial installations, and residential stained glass by Andrea Knight. Serving the Cincinnati area.',
+    'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight. Serving the Cincinnati area.',
 }
 
 export default function RootLayout({

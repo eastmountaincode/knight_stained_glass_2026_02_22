@@ -28,13 +28,15 @@ const ClientType = Sanity.defineType({
           fields: [
             defineField({
                 name: 'alt',
-                title: 'Alt',
+                title: 'Alt Text',
                 type: 'string',
+                description: 'Describes the image for screen readers and SEO. Not visible on the site.',
             }),
             defineField({
                 name: 'caption',
                 title: 'Caption',
                 type: 'string',
+                description: 'Visible text that appears beneath the image on the site.',
             }),
           ],
           preview: {

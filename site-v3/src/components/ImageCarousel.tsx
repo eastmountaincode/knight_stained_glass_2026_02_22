@@ -18,6 +18,7 @@ interface ImageCarouselProps {
 export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   // Track current slide via IntersectionObserver
   useEffect(() => {
@@ -72,6 +73,20 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
     [goToPrev, goToNext]
   )
 
+  // Close lightbox on Escape
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxIndex(null)
+    }
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleEsc)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', handleEsc)
+    }
+  }, [lightboxIndex])
+
   return (
     <div className={`relative flex flex-col ${className}`}>
       {/* Scroll container */}
@@ -92,7 +107,10 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
             aria-roledescription="slide"
             aria-label={`Slide ${index + 1} of ${images.length}`}
           >
-            <div className="relative h-full w-full overflow-hidden rounded-sm">
+            <div
+              className="relative h-full w-full cursor-zoom-in overflow-hidden rounded-sm"
+              onClick={() => setLightboxIndex(index)}
+            >
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -128,7 +146,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
           stroke="currentColor"
           className="h-5 w-5 sm:h-6 sm:w-6"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
         </svg>
       </button>
 
@@ -147,7 +165,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
           stroke="currentColor"
           className="h-5 w-5 sm:h-6 sm:w-6"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
         </svg>
       </button>
 
@@ -172,6 +190,49 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
           </button>
         ))}
       </div>
+
+      {/* Lightbox overlay */}
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={() => setLightboxIndex(null)}
+        >
+          <button
+            onClick={() => setLightboxIndex(null)}
+            className="absolute right-4 top-4 z-10 rounded-full border border-[var(--color-gold)]/30 bg-[#0a0a0a]/70 p-3 text-[var(--color-gold)] backdrop-blur-sm transition-all hover:bg-[var(--color-gold)]/20"
+            aria-label="Close lightbox"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div
+            className="relative h-[90vh] w-[90vw]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={images[lightboxIndex].src}
+              alt={images[lightboxIndex].alt}
+              fill
+              unoptimized
+              className="object-contain"
+              sizes="90vw"
+            />
+          </div>
+          {images[lightboxIndex].caption && (
+            <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-sm text-[var(--color-cream)]">
+              {images[lightboxIndex].caption}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   )
 }

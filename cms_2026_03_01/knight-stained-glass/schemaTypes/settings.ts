@@ -11,11 +11,13 @@ const Settings = Sanity.defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      description: 'The title of the site. Will be displayed in the browser tab.',
     },
     {
       name: 'description',
       title: 'Description',
       type: 'text',
+      description: 'The description of the site. Used in search engine results and social media previews.',
     },
   ]
 })
