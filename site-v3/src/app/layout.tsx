@@ -9,10 +9,16 @@ const inter = Inter({
   subsets: ['latin'],
 })
 
+const SITE_URL = 'https://www.knightstainedglass.com'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Knight Stained Glass - Cincinnati, OH',
   description:
     'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight. Serving the Cincinnati area.',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Knight Stained Glass - Cincinnati, OH',
     description:

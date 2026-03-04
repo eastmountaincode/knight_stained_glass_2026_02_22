@@ -18,8 +18,32 @@ export default async function Home() {
   const commercial = byId['commercial'];
   const residential = byId['residential'];
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Knight Stained Glass',
+    description:
+      'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight. Serving the Cincinnati area.',
+    url: 'https://www.knightstainedglass.com',
+    image: 'https://www.knightstainedglass.com/og-image.jpg',
+    telephone: contact?.phone,
+    email: contact?.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '2762 Highland Ave.',
+      addressLocality: 'Cincinnati',
+      addressRegion: 'OH',
+      postalCode: '45230',
+      addressCountry: 'US',
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <Hero />
       {religious && <ReligiousSection data={religious} />}

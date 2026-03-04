@@ -8,20 +8,18 @@ export function Hero() {
     >
       {/* Mobile hero image */}
       <Image
-        src="/hero-candidates/nd-one-window-restored-one-out.jpg"
+        src="/hero/nd-one-window-restored-one-out.jpg"
         alt="Notre Dame stained glass window restoration"
         fill
-        unoptimized
         className="object-cover lg:hidden opacity-90"
         style={{ objectPosition: 'center 50%', opacity: 0.9 }}
         priority
       />
       {/* Desktop hero image */}
       <Image
-        src="/hero-candidates/20250619_144327.jpg"
+        src="/hero/20250619_144327.jpg"
         alt="Stained glass detail"
         fill
-        unoptimized
         className="hidden object-cover lg:block opacity-90"
         style={{ objectPosition: 'center 36%' }}
         priority
