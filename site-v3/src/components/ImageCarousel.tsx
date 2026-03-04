@@ -92,7 +92,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
       {/* Scroll container */}
       <div
         ref={scrollRef}
-        className="flex min-h-[400px] flex-1 gap-9 snap-x snap-mandatory overflow-x-auto scrollbar-hide border-2 border-[var(--color-border-gold)] p-8"
+        className="flex min-h-[400px] flex-1 gap-9 snap-x snap-mandatory overflow-x-auto scrollbar-hide border-[var(--color-border-gold)] p-8"
         role="region"
         aria-label="Image gallery"
         aria-roledescription="carousel"
