@@ -18,7 +18,7 @@ export function MobileHeader({ sections, activeSection, menuOpen, onToggleMenu, 
 
   return (
     <>
-      <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between lg:hidden">
+      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between header:hidden">
         <a href="#hero" className="flex min-w-0 items-center gap-2">
           <Image
             src="/shield-logo.png"
@@ -59,7 +59,7 @@ export function MobileHeader({ sections, activeSection, menuOpen, onToggleMenu, 
       {/* Portal overlay so it's not constrained by <header> */}
       {mounted && createPortal(
         <div
-          className={`fixed inset-0 z-[49] flex flex-col items-center justify-center gap-8 bg-[#0a0a0a]/98 backdrop-blur-sm transition-all duration-300 ease-in-out lg:hidden ${
+          className={`fixed inset-0 z-[49] flex flex-col items-center justify-center gap-8 bg-[#0a0a0a]/98 backdrop-blur-sm transition-all duration-300 ease-in-out header:hidden ${
             menuOpen
               ? 'translate-y-0 opacity-100'
               : '-translate-y-full opacity-0 pointer-events-none'

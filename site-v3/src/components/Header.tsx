@@ -65,7 +65,7 @@ export function Header() {
 
   return (
     <header
-      className="fixed top-0 right-0 left-0 z-50 px-[5vw]"
+      className="fixed top-0 right-0 left-0 z-50 px-8 header:px-20 border-b-2 border-[var(--color-border-gold)]"
       style={{
         backgroundColor: `rgba(10, 10, 10, ${0.9 + scrollOpacity * 0.1})`,
         backdropFilter: scrollOpacity > 0 ? `blur(${scrollOpacity * 8}px)` : 'none',

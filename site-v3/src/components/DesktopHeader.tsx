@@ -7,7 +7,7 @@ interface Props {
 
 export function DesktopHeader({ sections, activeSection }: Props) {
   return (
-    <div className="mx-auto hidden h-20 items-center justify-between lg:flex">
+    <div className="mx-auto hidden h-20 items-center justify-between header:flex">
       <a href="#hero" className="flex items-center gap-3">
         <Image
           src="/shield-logo.png"

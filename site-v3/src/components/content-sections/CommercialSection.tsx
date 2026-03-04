@@ -1,4 +1,5 @@
 import { ImageCarousel, type CarouselImage } from '@/components/ImageCarousel'
+import { SectionHeading } from '@/components/SectionHeading'
 import { urlFor } from '@/lib/sanity'
 
 interface CommercialSectionProps {
@@ -20,15 +21,13 @@ export function CommercialSection({ data }: CommercialSectionProps) {
   return (
     <section
       id="commercial"
-      className="section-px flex min-h-[calc(100vh-3.5rem)] flex-col snap-start scroll-mt-14 border-b border-[var(--color-border)] py-20 lg:min-h-[calc(100vh-5rem)] lg:scroll-mt-20"
+      className="section-px flex flex-col scroll-mt-16 border-b-2 border-[var(--color-border)] py-20 lg:min-h-[calc(100vh-5rem)] lg:snap-start lg:scroll-mt-20"
     >
       <div className="flex flex-1 flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:gap-16">
-        <div className="lg:flex lg:flex-col lg:justify-center">
-          <h2 className="font-[family-name:var(--font-display)] text-4xl text-[var(--color-gold)]">
-            {data.title}
-          </h2>
+        <div className="flex flex-col min-[730px]:items-center lg:items-start lg:justify-center">
+          <SectionHeading ornament="2">{data.title}</SectionHeading>
           {data.description && (
-            <p className="mt-4 max-w-2xl text-lg text-[var(--color-text)]">{data.description}</p>
+            <p className="mt-4 max-w-2xl whitespace-pre-line text-2xl text-[var(--color-text)]">{data.description}</p>
           )}
         </div>
         {images.length > 0 && (

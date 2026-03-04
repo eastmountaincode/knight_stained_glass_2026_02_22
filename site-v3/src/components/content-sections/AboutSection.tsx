@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { SectionHeading } from '@/components/SectionHeading'
 import { urlFor } from '@/lib/sanity'
 
 interface AboutSectionProps {
@@ -19,21 +20,19 @@ export function AboutSection({ data }: AboutSectionProps) {
   return (
     <section
       id="about"
-      className="section-px flex min-h-[calc(100vh-3.5rem)] flex-col snap-start scroll-mt-14 border-b border-[var(--color-border)] py-20 lg:min-h-[calc(100vh-5rem)] lg:scroll-mt-20"
+      className="section-px flex min-h-[calc(100vh-4rem)] flex-col snap-start scroll-mt-16 border-b-2 border-[var(--color-border)] py-20 lg:min-h-[calc(100vh-5rem)] lg:scroll-mt-20"
     >
-      <div className="flex flex-1 flex-col lg:grid lg:grid-cols-[3fr_2fr] lg:gap-16">
-        <div className="lg:flex lg:flex-col lg:justify-center">
-          <h2 className="font-[family-name:var(--font-display)] text-4xl text-[var(--color-gold)]">
-            {data.heading ?? 'About'}
-          </h2>
+      <div className="flex flex-1 flex-col lg:grid lg:grid-cols-[3fr_2fr] lg:items-center lg:gap-16">
+        <div className="flex flex-col min-[730px]:items-center lg:items-start lg:justify-center">
+          <SectionHeading ornament="4">{data.heading ?? 'About'}</SectionHeading>
           {data.body && (
-            <p className="mt-4 max-w-2xl whitespace-pre-line text-lg text-[var(--color-text)]">
+            <p className="mt-4 max-w-2xl whitespace-pre-line text-2xl text-[var(--color-text)]">
               {data.body}
             </p>
           )}
         </div>
         {imageSrc && (
-          <div className="relative mt-10 aspect-[3/4] w-full overflow-hidden rounded lg:mt-0 max-w-md lg:max-w-none mx-auto lg:mx-0">
+          <div className="relative mt-10 aspect-[3/4] w-full overflow-hidden lg:mt-0 max-w-md lg:max-w-none mx-auto lg:mx-0">
             <Image
               src={imageSrc}
               alt={data.image?.alt ?? 'About Knight Stained Glass'}
