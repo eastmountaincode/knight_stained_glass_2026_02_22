@@ -10,11 +10,11 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Knight Stained Glass — Cincinnati, OH',
+  title: 'Knight Stained Glass - Cincinnati, OH',
   description:
     'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight. Serving the Cincinnati area.',
   openGraph: {
-    title: 'Knight Stained Glass — Cincinnati, OH',
+    title: 'Knight Stained Glass - Cincinnati, OH',
     description:
       'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight.',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Knight Stained Glass — Cincinnati, OH',
+    title: 'Knight Stained Glass - Cincinnati, OH',
     description:
       'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight.',
     images: ['/og-image.jpg'],
