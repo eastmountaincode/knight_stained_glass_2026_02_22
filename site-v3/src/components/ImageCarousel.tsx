@@ -92,7 +92,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
       {/* Scroll container */}
       <div
         ref={scrollRef}
-        className="flex min-h-[400px] flex-1 gap-9 snap-x snap-mandatory overflow-x-auto scrollbar-hide border-[var(--color-border-gold)] p-8"
+        className="flex h-[60vh] flex-1 gap-9 snap-x snap-mandatory overflow-x-auto scrollbar-hide border-2 border-[var(--color-border-gold)] bg-[#0a0a0a] p-6 lg:h-auto lg:min-h-[400px] lg:p-8"
         role="region"
         aria-label="Image gallery"
         aria-roledescription="carousel"
@@ -102,26 +102,24 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
         {images.map((image, index) => (
           <div
             key={image.key}
-            className="w-full flex-none snap-center"
+            className="flex w-full flex-none snap-center items-center justify-center"
             role="group"
             aria-roledescription="slide"
             aria-label={`Slide ${index + 1} of ${images.length}`}
           >
             <div
-              className="relative h-full w-full cursor-zoom-in overflow-hidden rounded-sm"
               onClick={() => setLightboxIndex(index)}
+              style={{ position: 'relative', cursor: 'zoom-in', lineHeight: 0 }}
             >
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={image.src}
                 alt={image.alt}
-                fill
-                unoptimized
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                style={{ display: 'block', maxHeight: 'calc(100vh - 18rem)', maxWidth: '100%', width: 'auto', height: 'auto' }}
               />
               {image.caption && (
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3 sm:px-6 sm:py-4">
-                  <p className="text-xl text-[var(--color-cream)] lg:text-xl">
+                <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: '0.6rem 0.9rem', backgroundColor: 'rgba(0,0,0,0.8)' }}>
+                  <p className="text-left text-md text-[var(--color-cream)]" style={{ lineHeight: 1.4 }}>
                     {image.caption}
                   </p>
                 </div>
@@ -226,11 +224,6 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
               sizes="90vw"
             />
           </div>
-          {images[lightboxIndex].caption && (
-            <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-sm text-[var(--color-cream)]">
-              {images[lightboxIndex].caption}
-            </p>
-          )}
         </div>
       )}
     </div>

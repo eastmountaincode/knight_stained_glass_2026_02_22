@@ -5,10 +5,11 @@ import { CommercialSection } from '@/components/content-sections/CommercialSecti
 import { ResidentialSection } from '@/components/content-sections/ResidentialSection'
 import { AboutSection } from '@/components/content-sections/AboutSection'
 import { ContactSection } from '@/components/content-sections/ContactSection'
-import { ClientTypes, About, Contact } from '@/lib/sanity';
+import { Hero as HeroData, ClientTypes, About, Contact } from '@/lib/sanity';
 
 export default async function Home() {
-  const [clientTypes, about, contact] = await Promise.all([
+  const [hero, clientTypes, about, contact] = await Promise.all([
+    HeroData.get(),
     ClientTypes.get(),
     About.get(),
     Contact.get(),
@@ -45,7 +46,7 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
-      <Hero />
+      <Hero data={hero} />
       {religious && <ReligiousSection data={religious} />}
       {commercial && <CommercialSection data={commercial} />}
       {residential && <ResidentialSection data={residential} />}

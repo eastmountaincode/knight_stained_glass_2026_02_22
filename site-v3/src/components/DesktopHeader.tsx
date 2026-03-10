@@ -10,7 +10,7 @@ export function DesktopHeader({ sections, activeSection }: Props) {
     <div className="mx-auto hidden h-20 items-center justify-between header:flex">
       <a href="#hero" className="flex items-center gap-3">
         <Image
-          src="/shield-logo.png"
+          src="/images/shield-logo.png"
           alt="Knight Stained Glass shield"
           width={34}
           height={41}

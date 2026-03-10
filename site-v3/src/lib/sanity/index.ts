@@ -36,6 +36,10 @@ export const Settings = {
   get: () => sanityFetch<any>(Queries.GET_SETTINGS_QUERY),
 };
 
+export const Hero = {
+  get: () => sanityFetch<any>(Queries.GET_HERO_QUERY),
+};
+
 export const ClientTypes = {
   get: () => sanityFetch<any[]>(Queries.CLIENT_TYPES_QUERY),
 };

@@ -23,6 +23,26 @@ export const CLIENT_TYPES_QUERY = defineQuery(
   }`
 );
 
+export const GET_HERO_QUERY = defineQuery(
+    `*[_id == "hero"][0] {
+    _id,
+    desktopImage {
+      ...,
+      asset -> {
+        _id,
+        url
+      }
+    },
+    mobileImage {
+      ...,
+      asset -> {
+        _id,
+        url
+      }
+    }
+  }`
+);
+
 export const GET_ABOUT_QUERY = defineQuery(
     `*[_id == "about"][0] {
     _id,

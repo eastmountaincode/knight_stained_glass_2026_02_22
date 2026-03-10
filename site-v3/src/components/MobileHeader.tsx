@@ -21,7 +21,7 @@ export function MobileHeader({ sections, activeSection, menuOpen, onToggleMenu, 
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between header:hidden">
         <a href="#hero" className="flex min-w-0 items-center gap-2">
           <Image
-            src="/shield-logo.png"
+            src="/images/shield-logo.png"
             alt="Knight Stained Glass shield"
             width={24}
             height={29}
