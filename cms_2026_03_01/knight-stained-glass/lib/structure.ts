@@ -1,7 +1,7 @@
 import * as SanityStructure from 'sanity/structure'
 import * as Icons from './icons'
 
-const SINGLETONS = ['settings', 'religious', 'commercial', 'residential', 'about', 'contact']
+const SINGLETONS = ['settings', 'hero', 'religious', 'commercial', 'residential', 'about', 'contact']
 
 const structure: SanityStructure.StructureResolver = (S) => {
   return S.list()
@@ -11,6 +11,11 @@ const structure: SanityStructure.StructureResolver = (S) => {
         .title('Settings')
         .icon(Icons.Settings)
         .child(S.document().schemaType('settings').documentId('settings')),
+
+      S.listItem()
+        .title('Hero')
+        .icon(Icons.RichImage)
+        .child(S.document().schemaType('hero').documentId('hero')),
 
       S.divider(),
       S.listItem()

@@ -77,7 +77,7 @@ export function Hero({ data }: HeroProps) {
         <h1 className="font-[family-name:var(--font-display)] text-5xl leading-tight text-[var(--color-cream)] lg:text-7xl">
           Knight<br className="lg:hidden" /> Stained Glass
         </h1>
-        <p className="mt-4 text-xl text-[var(--color-text)] lg:text-3xl">
+        <p className="mt-4 text-2xl text-[var(--color-text)] lg:text-3xl">
           Church Restorations &amp;<br className="lg:hidden" /> Custom Stained Glass
         </p>
         <p className="mt-1 text-lg tracking-widest text-[var(--color-text-muted)] uppercase">
