@@ -46,7 +46,7 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
-      <Hero data={hero} />
+      {hero && <Hero data={hero} />}
       {religious && <ReligiousSection data={religious} />}
       {commercial && <CommercialSection data={commercial} />}
       {residential && <ResidentialSection data={residential} />}

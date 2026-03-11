@@ -15,6 +15,8 @@ interface HeroProps {
 }
 
 export function Hero({ data }: HeroProps) {
+  if (!data?.mobileImage?.asset || !data?.desktopImage?.asset) return null
+
   const mobile = {
     src: urlFor(data.mobileImage.asset).width(1200).url(),
     alt: data.mobileImage.alt ?? 'Knight Stained Glass',

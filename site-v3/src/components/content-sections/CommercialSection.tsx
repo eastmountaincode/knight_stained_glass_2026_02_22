@@ -13,12 +13,14 @@ interface CommercialSectionProps {
 }
 
 export function CommercialSection({ data }: CommercialSectionProps) {
-  const images: CarouselImage[] = (data.image ?? []).map((img) => ({
-    key: img._key,
-    src: urlFor(img.asset).width(1200).url(),
-    alt: img.alt ?? 'Commercial stained glass',
-    caption: img.caption,
-  }))
+  const images: CarouselImage[] = (data.image ?? [])
+    .filter((img) => img.asset != null)
+    .map((img) => ({
+      key: img._key,
+      src: urlFor(img.asset).width(1200).url(),
+      alt: img.alt ?? 'Commercial stained glass',
+      caption: img.caption,
+    }))
 
   return (
     <section
