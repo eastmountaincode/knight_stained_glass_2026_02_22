@@ -133,7 +133,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
       <button
         onClick={goToPrev}
         disabled={currentIndex === 0}
-        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full border border-[var(--color-gold)]/30 bg-[#0a0a0a] p-4 text-[var(--color-gold)] transition-all hover:bg-[#1a1a1a] disabled:border-[var(--color-gold)]/10 disabled:text-[var(--color-gold)]/20 disabled:cursor-default sm:left-4"
+        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full border border-[var(--color-gold)]/30 bg-[#0a0a0a] p-4 text-[var(--color-gold)] transition-all hover:bg-[#1a1a1a] disabled:border-[var(--color-gold)]/10 disabled:text-[var(--color-gold)]/20 disabled:cursor-default sm:left-4"
         aria-label="Previous image"
       >
         <svg
@@ -152,7 +152,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
       <button
         onClick={goToNext}
         disabled={currentIndex === images.length - 1}
-        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full border border-[var(--color-gold)]/30 bg-[#0a0a0a] p-4 text-[var(--color-gold)] transition-all hover:bg-[#1a1a1a] disabled:border-[var(--color-gold)]/10 disabled:text-[var(--color-gold)]/20 disabled:cursor-default sm:right-4"
+        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full border border-[var(--color-gold)]/30 bg-[#0a0a0a] p-4 text-[var(--color-gold)] transition-all hover:bg-[#1a1a1a] disabled:border-[var(--color-gold)]/10 disabled:text-[var(--color-gold)]/20 disabled:cursor-default sm:right-4"
         aria-label="Next image"
       >
         <svg
@@ -173,7 +173,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
           <button
             key={index}
             onClick={() => scrollTo(index)}
-            className="flex items-center justify-center p-2"
+            className="flex cursor-pointer items-center justify-center p-2"
             role="tab"
             aria-selected={index === currentIndex}
             aria-label={`Go to slide ${index + 1}`}
@@ -197,7 +197,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
         >
           <button
             onClick={() => setLightboxIndex(null)}
-            className="absolute right-4 top-4 z-10 rounded-full border border-[var(--color-gold)]/30 bg-[#0a0a0a]/70 p-3 text-[var(--color-gold)] backdrop-blur-sm transition-all hover:bg-[var(--color-gold)]/20"
+            className="absolute right-4 top-4 z-10 cursor-pointer rounded-full border border-[var(--color-gold)]/30 bg-[#0a0a0a]/70 p-3 text-[var(--color-gold)] backdrop-blur-sm transition-all hover:bg-[var(--color-gold)]/20"
             aria-label="Close lightbox"
           >
             <svg
