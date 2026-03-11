@@ -33,14 +33,19 @@ body {
 }
 
 /* All interactive elements get pointer cursor */
-button,
+button:not(:disabled),
 a,
 [role="button"],
-input[type="submit"],
-input[type="button"],
+input[type="submit"]:not(:disabled),
+input[type="button"]:not(:disabled),
 select,
 summary {
-  cursor: pointer;
+  cursor: pointer !important;
+}
+
+button:disabled,
+input:disabled {
+  cursor: default !important;
 }
 
 /* Shared horizontal padding for all sections */
