@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Knight Stained Glass',
     description:
       'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight. Serving the Cincinnati area.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: 'Knight Stained Glass',
     description:
       'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight. Serving the Cincinnati area.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   },
 }
 
