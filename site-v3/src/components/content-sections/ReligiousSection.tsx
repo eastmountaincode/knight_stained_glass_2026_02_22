@@ -25,7 +25,7 @@ export function ReligiousSection({ data }: ReligiousSectionProps) {
   return (
     <section
       id="religious"
-      className="relative section-px flex flex-col scroll-mt-16 border-b-2 border-[var(--color-border)] py-20 lg:min-h-[calc(100vh-5rem)] lg:snap-start lg:scroll-mt-20 overflow-hidden"
+      className="relative section-px flex flex-col scroll-mt-16 border-b-2 border-[var(--color-border)] py-20 lg:min-h-[calc(100vh-5rem)] lg:scroll-mt-20 overflow-hidden"
     >
       {/* Decorative schematic — mobile */}
       <Image

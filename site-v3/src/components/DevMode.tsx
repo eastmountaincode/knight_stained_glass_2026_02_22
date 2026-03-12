@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from 'react'
 
+const ENABLED = false
+
 export function DevMode() {
   const [active, setActive] = useState(false)
 
   useEffect(() => {
+    if (!ENABLED) return
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'b' || e.key === 'B') {
         if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return

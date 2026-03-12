@@ -36,7 +36,7 @@ export function Hero({ data }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen snap-start items-center overflow-hidden border-b-2 border-[var(--color-border)]"
+      className="relative flex min-h-screen items-center overflow-hidden border-b-2 border-[var(--color-border)]"
     >
       {/* Mobile hero image */}
       <Image
