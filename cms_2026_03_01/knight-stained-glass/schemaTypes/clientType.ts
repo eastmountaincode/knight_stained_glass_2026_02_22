@@ -1,6 +1,7 @@
 import * as Sanity from 'sanity';
 import * as Icons from '../lib/icons';
 import { defineField } from 'sanity';
+import { OrnamentPicker } from '../lib/OrnamentPicker';
 
 const ClientType = Sanity.defineType({
   name: 'clientType',
@@ -18,6 +19,13 @@ const ClientType = Sanity.defineType({
       title: 'Description',
       type: 'text',
     },
+    defineField({
+      name: 'ornament',
+      title: 'Section Ornament',
+      type: 'string',
+      description: 'Decorative symbol shown next to the section heading.',
+      components: { input: OrnamentPicker },
+    }),
     {
       name: 'image',
       title: 'Images',

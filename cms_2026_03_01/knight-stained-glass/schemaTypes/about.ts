@@ -1,5 +1,6 @@
 import { defineType, defineField } from 'sanity'
 import * as Icons from '../lib/icons'
+import { OrnamentPicker } from '../lib/OrnamentPicker'
 
 const About = defineType({
   name: 'about',
@@ -11,6 +12,13 @@ const About = defineType({
       name: 'heading',
       title: 'Heading',
       type: 'string',
+    }),
+    defineField({
+      name: 'ornament',
+      title: 'Section Ornament',
+      type: 'string',
+      description: 'Decorative symbol shown next to the section heading.',
+      components: { input: OrnamentPicker },
     }),
     defineField({
       name: 'body',
@@ -28,6 +36,7 @@ const About = defineType({
           name: 'alt',
           title: 'Alt Text',
           type: 'string',
+          description: 'Describes the image for screen readers and SEO. Not visible on the site.',
         }),
       ],
     }),
