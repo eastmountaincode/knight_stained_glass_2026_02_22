@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { SectionHeading } from '@/components/SectionHeading'
+import { StraightHyphenText } from '@/components/StraightHyphenText'
 import { urlFor } from '@/lib/sanity'
 
 interface AboutSectionProps {
@@ -26,9 +27,9 @@ export function AboutSection({ data }: AboutSectionProps) {
         <div className="flex flex-col min-[730px]:items-center lg:items-start lg:justify-center">
           <SectionHeading ornament="4">{data.heading ?? 'About'}</SectionHeading>
           {data.body && (
-            <p className="mt-4 max-w-2xl whitespace-pre-line text-2xl text-[var(--color-text)]">
+            <StraightHyphenText className="mt-4 max-w-2xl whitespace-pre-line text-2xl text-[var(--color-text)]">
               {data.body}
-            </p>
+            </StraightHyphenText>
           )}
         </div>
         {imageSrc && (

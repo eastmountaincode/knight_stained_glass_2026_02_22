@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { SectionHeading } from '@/components/SectionHeading'
+import { StraightHyphenText } from '@/components/StraightHyphenText'
 import { urlFor } from '@/lib/sanity'
 
 interface ContactSectionProps {
@@ -79,7 +80,7 @@ export function ContactSection({ data }: ContactSectionProps) {
             )}
           </dl>
           {data.body && (
-            <p className="mt-8 max-w-2xl whitespace-pre-line text-2xl text-[var(--color-text)]">{data.body}</p>
+            <StraightHyphenText className="mt-8 max-w-2xl whitespace-pre-line text-2xl text-[var(--color-text)]">{data.body}</StraightHyphenText>
           )}
         </div>
         {imageSrc && (

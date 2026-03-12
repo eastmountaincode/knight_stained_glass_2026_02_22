@@ -48,7 +48,10 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
     if (!container) return
     const slide = container.children[index] as HTMLElement | undefined
     if (slide) {
-      slide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+      const containerRect = container.getBoundingClientRect()
+      const slideRect = slide.getBoundingClientRect()
+      const scrollLeft = container.scrollLeft + (slideRect.left - containerRect.left)
+      container.scrollTo({ left: scrollLeft, behavior: 'smooth' })
     }
   }, [])
 
