@@ -51,3 +51,7 @@ export const About = {
 export const Contact = {
   get: () => sanityFetch<any>(Queries.GET_CONTACT_QUERY),
 };
+
+export const Testimonials = {
+  get: () => sanityFetch<any>(Queries.GET_TESTIMONIALS_QUERY),
+};

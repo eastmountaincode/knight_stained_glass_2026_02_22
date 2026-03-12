@@ -15,7 +15,7 @@
   --font-display-troy: "p22-morris-troy", sans-serif;
   --font-ornaments: "p22-morris-ornaments", sans-serif;
   --font-body: "p22-morris-golden", sans-serif;
-  --breakpoint-header: 1150px;
+  --breakpoint-header: 1300px;
 }
 
 html {

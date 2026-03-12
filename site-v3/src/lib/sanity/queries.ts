@@ -13,6 +13,7 @@ export const CLIENT_TYPES_QUERY = defineQuery(
     _id,
     title,
     description,
+    ornament,
     image[] {
       ...,
       asset -> {
@@ -47,6 +48,7 @@ export const GET_ABOUT_QUERY = defineQuery(
     `*[_id == "about"][0] {
     _id,
     heading,
+    ornament,
     body,
     image {
       ...,
@@ -58,10 +60,21 @@ export const GET_ABOUT_QUERY = defineQuery(
   }`
 );
 
+export const GET_TESTIMONIALS_QUERY = defineQuery(
+  `*[_id == "testimonials"][0] {
+    _id,
+    ornament,
+    testimonial1 { author, quote, context },
+    testimonial2 { author, quote, context },
+    testimonial3 { author, quote, context },
+  }`
+);
+
 export const GET_CONTACT_QUERY = defineQuery(
     `*[_id == "contact"][0] {
     _id,
     heading,
+    ornament,
     phone,
     email,
     address,

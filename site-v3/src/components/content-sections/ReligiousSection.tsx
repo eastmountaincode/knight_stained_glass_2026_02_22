@@ -8,6 +8,7 @@ interface ReligiousSectionProps {
   data: {
     title: string
     description?: string
+    ornament?: string
     image?: Array<{ _key: string; asset: { _id: string; url: string }; alt?: string; caption?: string }>
   }
 }
@@ -50,7 +51,7 @@ export function ReligiousSection({ data }: ReligiousSectionProps) {
       />
       <div className="flex flex-1 flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:gap-16">
         <div className="flex flex-col min-[730px]:items-center lg:items-start lg:justify-center">
-          <SectionHeading ornament="1">{data.title}</SectionHeading>
+          <SectionHeading ornament={data.ornament ?? '4'}>{data.title}</SectionHeading>
           {data.description && (
             <StraightHyphenText className="mt-4 max-w-2xl whitespace-pre-line text-2xl text-[var(--color-text)]">{data.description}</StraightHyphenText>
           )}

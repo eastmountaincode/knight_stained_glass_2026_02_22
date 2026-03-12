@@ -6,6 +6,7 @@ import { urlFor } from '@/lib/sanity'
 interface AboutSectionProps {
   data: {
     heading?: string
+    ornament?: string
     body?: string
     image?: { asset: { _id: string; url: string }; alt?: string }
   } | null
@@ -25,7 +26,7 @@ export function AboutSection({ data }: AboutSectionProps) {
     >
       <div className="flex flex-1 flex-col lg:grid lg:grid-cols-[3fr_2fr] lg:items-center lg:gap-16">
         <div className="flex flex-col min-[730px]:items-center lg:items-start lg:justify-center">
-          <SectionHeading ornament="4">{data.heading ?? 'About'}</SectionHeading>
+          <SectionHeading ornament={data.ornament ?? '4'}>{data.heading ?? 'About'}</SectionHeading>
           {data.body && (
             <StraightHyphenText className="mt-4 max-w-2xl whitespace-pre-line text-2xl text-[var(--color-text)]">
               {data.body}

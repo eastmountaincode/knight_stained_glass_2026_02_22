@@ -22,7 +22,7 @@ export function DesktopHeader({ sections, activeSection }: Props) {
         </span>
       </a>
 
-      <ul className="flex gap-8">
+      <ul className="flex gap-6">
         {sections.map(({ id, label }) => (
           <li key={id}>
             <a

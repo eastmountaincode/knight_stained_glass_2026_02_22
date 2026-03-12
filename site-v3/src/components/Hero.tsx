@@ -85,9 +85,9 @@ export function Hero({ data }: HeroProps) {
         <p className="mt-1 text-lg tracking-widest text-[var(--color-text-muted)] uppercase">
           Cincinnati, OH
         </p>
-        <p className="mt-4 text-lg tracking-wide text-[var(--color-gold)]">
+        {/* <p className="mt-4 text-lg tracking-wide text-[var(--color-gold)]">
           ★★★★★&ensp;<br></br>37 Five<span style={{ fontFamily: 'sans-serif' }}>-</span>Star Google Reviews
-        </p>
+        </p> */}
         <a
           href="#contact"
           className="mt-8 inline-block rounded-sm border border-[var(--color-gold)] bg-[var(--color-gold)]/10 px-6 py-3 font-[family-name:var(--font-display)] text-lg tracking-wide text-[var(--color-gold)] transition-colors hover:bg-[var(--color-gold)]/20 lg:text-2xl lg:px-8 lg:py-4"
