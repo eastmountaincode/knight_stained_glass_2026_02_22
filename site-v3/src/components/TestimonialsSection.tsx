@@ -28,7 +28,7 @@ export function TestimonialsSection({ data }: TestimonialsSectionProps) {
           {items.map((t, i) => (
             <div
               key={i}
-              className="flex flex-col gap-6 rounded-sm border border-[var(--color-gold)]/20 bg-white/[0.03] p-8"
+              className="flex flex-col gap-6  border border-[var(--color-gold)]/20 bg-white/[0.02] p-8"
             >
               <p className="flex-1 font-[family-name:var(--font-serif)] text-lg leading-relaxed text-[var(--color-text)] opacity-90">
                 &ldquo;{t.quote.trim()}&rdquo;
