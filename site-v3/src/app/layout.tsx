@@ -13,24 +13,24 @@ const SITE_URL = 'https://www.knightstainedglass.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'Knight Stained Glass - Cincinnati, OH',
+  title: 'Knight Stained Glass',
   description:
     'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight. Serving the Cincinnati area.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Knight Stained Glass - Cincinnati, OH',
+    title: 'Knight Stained Glass',
     description:
-      'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight.',
+      'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight. Serving the Cincinnati area.',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Knight Stained Glass - Cincinnati, OH',
+    title: 'Knight Stained Glass',
     description:
-      'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight.',
+      'Church restorations, commercial installations, and custom residential stained glass by Andrea Knight. Serving the Cincinnati area.',
     images: ['/og-image.jpg'],
   },
 }
